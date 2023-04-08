@@ -16,10 +16,6 @@ export default function UsersList({
     );
   }
 
-  if (query.isLoading) {
-    return <div>Loading ... </div>;
-  }
-
   if (query.isSuccess) {
     return (
       <div>
@@ -34,4 +30,6 @@ export default function UsersList({
       </div>
     );
   }
+
+  return <div>Loading ... </div>;
 }

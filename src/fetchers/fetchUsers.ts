@@ -6,5 +6,5 @@ export default async function ({ queryKey }: { queryKey: string[] }) {
   const response = await fetch(`https://reqres.in/api/users?page=${page}`);
   const pageData: Promise<IPageData> = response.json();
 
-  return pageData;
+  return Promise.resolve(pageData);
 }

@@ -24,7 +24,7 @@ function App() {
       <h1>React Query Example</h1>
       <div className="card">
         <UsersList page={page} handlerUserId={handlerUserId} />
-        {/* <UserInfo userId={userId} /> */}
+        <UserInfo userId={userId} />
       </div>
       <button disabled={page === 1} onClick={handlerPreviousPage}>
         Anterior
