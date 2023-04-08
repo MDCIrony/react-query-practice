@@ -6,6 +6,7 @@ export default function UserInfo({ userId }: { userId: number | null }) {
     ["info", userId !== null ? userId.toString() : "1"],
     fetchUserData,
     {
+      keepPreviousData: true,
       enabled: userId !== null,
     }
   );
