@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { UsersList, UserInfo } from "./components";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [page, setPage] = useState<number>(1);
+  const [userId, setUserId] = useState<number | null>(null);
 
+  function handlerNextPage(): void {
+    setPage(page + 1);
+  }
+
+  function handlerPreviousPage(): void {
+    if (page <= 1) return;
+
+    setPage(page - 1);
+  }
+
+  function handlerUserId(userId: number) {
+    setUserId(userId);
+  }
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>React Query Example</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <UsersList page={page} handlerUserId={handlerUserId} />
+        <UserInfo userId={userId} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button disabled={page === 1} onClick={handlerPreviousPage}>
+        Anterior
+      </button>
+      <button disabled={page === 2} onClick={handlerNextPage}>
+        Siguiente
+      </button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
