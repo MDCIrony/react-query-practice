@@ -8,7 +8,9 @@ export default function UsersList({
   page: number;
   handlerUserId: Function;
 }): React.ReactElement {
-  const query = useQuery(["users", page.toString()], fetchUsers, {});
+  const query = useQuery(["users", page.toString()], fetchUsers, {
+    keepPreviousData: true,
+  });
 
   if (query.isError) {
     return (
